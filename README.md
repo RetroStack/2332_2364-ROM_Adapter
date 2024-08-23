@@ -4,7 +4,6 @@ This repository provides an adapter for 2332 and 2364 ROMs for vintage computers
 
 ![Adapter Variations](/Images/InPlace.png)
 ![Adapter Variations](/Latest/2332_2364_ROM_Adapter_Photo.png)
-(When assembling, use a low-profile DIP switch instead to fit nicely in the case.)
 
 ## Project Details
 
@@ -27,12 +26,12 @@ The adapter has been implemented using KiCAD 7. The KiCAD project files are incl
 
 ![PCB](/Latest/2332_2364_ROM_Adapter_Photo1.png)
 
-1. Get a straight male pin header with pitch (2.54mm; standard) and break it to a 9-pin length. Do this twice. A machined header is recommended if the adapter will be inserted into a socket. Inserting a square pin in a socket might damage them.
-2. Solder the pins in place into the central lengthwise holes. To align them correctly, you can use another socket or a breadboard. Stick the longer parts into the socket/breadboard and put the PCB on top. Solder first both edges on each. Recheck if they are flush to the header. If not, reheat the corner that needs correction and press down on PCB until flush. Then, solder all other pins.
+1. Get a straight male pin header with pitch (2.54mm; standard) and break it to a 12-pin length. Do this twice. A machined header is recommended if the adapter will be inserted into a socket. Inserting a square pin in a socket might damage them.
+2. Solder the pins in place into the smaller 12-pin lengthwise holes. To align them correctly, you can use another socket or a breadboard. Stick the longer parts into the socket/breadboard and put the PCB on top. Solder first both edges on each. Recheck if they are flush to the header. If not, reheat the corner that needs correction and press down on PCB until flush. Then, solder all other pins.
 3. Install the resistor network. One edge has a square around one pin. This should be where pin 1 will be inserted. Pin 1 is identified on the resistor network usually with a dot.
-4. Write/burn one of the binaries for character sets onto a ROM.
-5. (Optional) Solder a socket in place. Similarly to the headers mentioned above, only solder one pin on each side before soldering all to be able to make adjustments as needed. Adding a socket is not recommended for machines which do not have enough space for it (e.g., TRS-80 Model 1). For these, you need to skip this step and solder the ROM directly to the board.
-6. Solder the ROM to the board or insert it into the socket.
+4. Write/burn one of the binaries onto a ROM.
+5. (Optional) Solder a socket in place. Similarly to the headers mentioned above, only solder one pin on each side before soldering all to be able to make adjustments as needed. Adding a socket is not recommended for machines which do not have enough clearance for it (e.g., TRS-80 Model 1). For these, you need to skip this step and solder the ROM directly to the board.
+6. Solder the ROM to the board or insert it into the socket. Since the pins are close, this might be tricky.
 
 ![Partly Assembled](/Latest/2332_2364_ROM_Adapter_Photo2.png)
 
@@ -50,34 +49,37 @@ Here are some examples:
 7. Clip off extension board on perforated line.
 8. Use solder bridges on the bottom to pre-select a character set.
 
+![Assembled](/Images/Image4.png)
+
 #### Jumper Caps
 
 7. Add a 2 row pin straight header (2.54mm pitch) to the center two pins of the extension board. You need to leave one row on each side (on edge and on the side next to the ROM).
 8. Add jumpers.
 
-![Assembled](/Images/Image3.png)
-
 ### Right Angle Jumpers
 
 **NOTE**: Due to space constraints, only 5 jumpers can be used. 7) Clip off extension board on perforated line. 8) Add a 2 row pin right-angle header (2.54mm pitch) to the bottom of the PCB, extending one end out over the board where the extension was. 8) Add jumpers.
-
-![Assembled](/Images/Image2.png)
 
 ### DIP Switches
 
 **NOTE**: For TRS-80 Model 1: Use low-profile dip switches to make sure the adapter fits in the case. 7) Add a DIP switch on the extension board. The DIP switch should cover all holes from front to back.
 
-![Assembled](/Images/Image1.png)
+![Assembled](/Images/Image2.png)
 
 ### DIP Switches on extension board
 
 **NOTE**: Due to space constraints, only 5 DIP switches can be used. 7) Clip off extension board on perforated line. 8) Solder up to 6 wires (e.g. ribbon cable) to the bottom of the PCB. Use up to 5 wires for each address line, which is the row close to the center of the board (next to the revision number). To identify which address line is which, see the label just below the ROM on the top of the adapter PCB. Solder at least one wire to any of the holes closer to the edge of the board. These are ground pins and therefore any could be used. 9) Solder all wires to the extension board. Use the central two rows of holes. Solder it on from the bottom as DIP switches will be added to the top. Solder the address lines closest to the perforated line where the extension board was attached to the adapter PCB. Solder the single ground wire to and other hole of the second row of holes further away from the perforated edge. 10) Add a DIP switch on the extension board. The DIP switch should cover all holes from front to back. You may need to trim the soldered pins of the cable to solder the DIP switches as close to flush as possible.
 
-![Assembled](/Images/Image4.png)
+![Assembled](/Images/Image3.png)
 
 ### Jumper caps on extension board
 
 NOTE: Due to space constraints, only 5 jumpers can be used. 7) Clip off extension board on perforated line. 8) Solder up to 6 wires (e.g. ribbon cable) to the bottom of the PCB. Use up to 5 wires for each address line, which is the row close to the center of the board (next to the revision number). To identify which address line is which, see the label just below the ROM on the top of the adapter PCB. Solder at least one wire to any of the holes closer to the edge of the board. These are ground pins and therefore any could be used. 9) Add a 2 row pin straight header (2.54mm pitch) to the center two pins of the extension board. You need to leave one row on each side (on edge and on the side next to the ROM). 10) Solder all wires to the extension board. Use the row closer to the perforated edge to solder the address lines. Solder the single ground wire to and other hole at the bottom edge furthest away from the perforated edge. You can solder it from the top or bottom. 11) Add jumpers.
+
+### Jumper caps on extension board
+
+![Assembled](/Images/Image1.png)
+![Assembled](/Images/Image5.png)
 
 ### Why is the configuration active low?
 
