@@ -37,7 +37,7 @@ The adapter has been implemented using KiCAD 7. The KiCAD project files are incl
 
 #### Bank Switching
 
-The adapter allows for bank-switching of various ROMs. Depending on the size of the ROM used, only certain pins may be configurable. For example, a 27256 ROM has 15 address pins. The adapter exposes 13 of these pins to the bottom pins, leaving 2 additional pins available for bank-switching.
+The adapter allows for bank-switching of various ROMs. Depending on the size of the ROM used, only certain pins may be configurable. For example, a 27256 ROM has 15 address pins. The adapter exposes 13 of these pins to the bottom pins, leaving 2 additional address lines available for bank-switching. A 27512 would then have 3 additional address lines.
 
 **NOTE**: Keep in mind that the bits are active-low. This means that if you want to set a `1` on a specific address, you leave it unbridged. If you want a `0`, you should bridge it. See below for more details on why it was designed this way.
 
@@ -105,14 +105,6 @@ Depending on which ROM and even the specific version you want to emulate, you wi
 
 ![Assembled](/Images/Image6.png)
 
-#### 2364 (with pin 20 as "active low")
-
-This is the default configuration. No additional steps are required.
-
-#### 2364 (with pin 20 as "active high")
-- Install U3 (74LS04)
-- Switch jumper JP7: 1) Cut one side, 2) solder the other
-
 #### 2332 (with pin 20 as "active low")
 - Switch jumper JP4: 1) Cut one side, 2) solder the other
 - Connect JP8 to either 5V or GND, depending on the value you want for address line A12 (starting from A0).
@@ -129,11 +121,19 @@ This is the default configuration. No additional steps are required.
 - Install U3 (74LS04)
 - Switch jumper JP5: 1) Cut one side, 2) solder the other
 
+#### 2364 (with pin 20 as "active low")
+
+This is the default configuration. No additional steps are required.
+
+#### 2364 (with pin 20 as "active high")
+- Install U3 (74LS04)
+- Switch jumper JP7: 1) Cut one side, 2) solder the other
+
 ### Q&A
 
 #### Why is the configuration active low?
 
-Some ROMs, especially EEPROMs, have an active-low WRITE pin that needs to be HIGH (or 1) during normal (read) use. To prevent accidentally putting ROMs into the incorrect mode (write mode instead of read mode), all additional pins are pulled high by default through pull-up resistors.
+Some ROMs, especially EEPROMs, have an active-low WRITE pin that needs to be HIGH (or `1`) during normal (read) use. To prevent accidentally putting ROMs into the incorrect mode (write mode instead of read mode), all additional pins are pulled high by default through pull-up resistors.
 
 #### Why are address lines from right to left?
 
