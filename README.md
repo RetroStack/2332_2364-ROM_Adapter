@@ -35,19 +35,21 @@ The adapter has been implemented using KiCAD 7. The KiCAD project files are incl
 
 ![Partly Assembled](/Latest/2332_2364_ROM_Adapter_Photo2.png)
 
-The adapter provides various configurations. Depending on your ROM used, only some pins can be configured.
-For example, a 27256 ROM has 15 address pins. The adapter exposes only 13 pins and therefore 2 additional pins can be configured. 
+#### Bank Switching
 
-**NOTE**: Keep in mind that the bits are active-low. That means if you want to set a 1 on a specific address, you leave it unbridged. If you want a 0, then bridge it. See below for more details why it was designed that way.
+The adapter allows to bank-switch various ROMs. Depending on the size of ROM used, only some pins may be configurable.
+For example, a 27256 ROM has 15 address pins. The adapter exposes 13 pins to the bottom pins and therefore has 2 additional pins which can be configured for bank-switching. 
+
+**NOTE**: Keep in mind that the bits are active-low. That means if you want to set a `1` on a specific address, you leave it unbridged. If you want a `0`, then bridge it. See below for more details why it was designed that way.
 
 **NOTE**: The board exposes the bits from right to left. If you prefer left to right (e.g. for DIP switches to match labels), then flip the address bits in the ROM or use the provided "f" versions of these.
 
-Here are some examples of available configurations:
+Here are some examples of available bank-switching configurations:
 
-#### No Configuration at all
+#### No Bank-Switching at all
 
 7. Clip off extension board on perforated line.
-8. Use solder bridges on the bottom to pre-select a character set.
+8. Use solder bridges on the bottom to pre-select a specific ROM.
 
 ![Assembled](/Images/Image4.png)
 
@@ -56,46 +58,85 @@ Here are some examples of available configurations:
 7. Add a 2 row pin straight header (2.54mm pitch) to the center two pins of the extension board. You need to leave one row on each side (on edge and on the side next to the ROM).
 8. Add jumpers.
 
-### Right Angle Jumpers
+#### Right Angle Jumpers
 
 7) Clip off extension board on perforated line.
 8) Add a 2 row pin right-angle header (2.54mm pitch) to the bottom of the PCB, extending one end out over the board where the extension was.
 9) Add jumpers.
 
-### DIP Switches
+#### DIP Switches
 
 **NOTE**: For TRS-80 Model 1: Use low-profile dip switches to make sure the adapter fits in the case.
 7) Add a DIP switch on the extension board. The DIP switch should cover all holes from front to back.
 
 ![Assembled](/Images/Image2.png)
 
-### DIP Switches on extension board
+#### DIP Switches on extension board
 
 7) Clip off extension board on perforated line. 
 8) Solder up to 6 wires (e.g. ribbon cable) to the bottom of the PCB. Use up to 3 wires for each address line, which is the row close to the center of the board. To identify which address line is which, see the label just below the ROM on the top of the adapter PCB. Solder at least one wire to any of the holes closer to the edge of the board. These are ground pins and therefore any could be used.
-9) Solder all wires to the extension board. Use the central two rows of holes. Solder it on from the bottom as DIP switches will be added to the top. Solder the address lines closest to the perforated line where the extension board was attached to the adapter PCB. Solder the single ground wire to and other hole of the second row of holes further away from the perforated edge.
+9) Solder all wires to the extension board. Use the central two rows of holes. Solder it on from the bottom as DIP switches will be added to the top. Solder the address lines closest to the perforated line where the extension board was attached to the adapter PCB. Solder the ground wires to the other holes of the second row further away from the perforated edge.
 10) Add a DIP switch on the extension board. The DIP switch should cover all holes from front to back. You may need to trim the soldered pins of the cable to solder the DIP switches as close to flush as possible.
 
 ![Assembled](/Images/Image3.png)
 
-### Jumper caps on extension board
+#### Jumper caps on extension board
 
 7) Clip off extension board on perforated line.
 8) Solder up to 6 wires (e.g. ribbon cable) to the bottom of the PCB. Use up to 3 wires for each address line, which is the row close to the center of the board. To identify which address line is which, see the label just below the ROM on the top of the adapter PCB. Solder at least one wire to any of the holes closer to the edge of the board. These are ground pins and therefore any could be used.
 9) Add a 2 row pin straight header (2.54mm pitch) to the center two pins of the extension board. You need to leave one row on each side (on edge and on the side next to the ROM).
-10) Solder all wires to the extension board. Use the row closer to the perforated edge to solder the address lines. Solder the single ground wire to and other hole at the bottom edge furthest away from the perforated edge. You can solder it from the top or bottom.
+10) Solder all wires to the extension board. Use the row closer to the perforated edge to solder the address lines. Solder the single ground wire to the other hole at the bottom edge furthest away from the perforated edge. You can solder it from the top or bottom.
 11) Add jumpers.
 
-### Jumper caps on extension board
+#### Connect two or more adapters together
 
 ![Assembled](/Images/Image1.png)
+
+Sometimes it is useful to be able to bank-switch multiple ROMs all at once.
+
+7) Clip off extension boards on nearly all boards at the perforated line - except one which will be used for selection.
+8) Solder up to 6 wires (e.g. ribbon cable) to the bottom of one PCB. Use up to 3 wires for each address line, which is the row close to the center of the board. To identify which address line is which, see the label just below the ROM on the top of the adapter PCB. Solder at least one wire to any of the holes closer to the edge of the board. These are ground pins and therefore any could be used.
+9) Repeat the same for the other board with the other end of the wires. Make sure that the wires from one pad goes to the same pad on the other adapter.
+
 ![Assembled](/Images/Image5.png)
 
-### Why is the configuration active low?
+### Configuration
+
+Depending on what ROM and even specific version you want to emulate, you will need to configure the adapter differently. Following a list of confiurations:
+
+![Assembled](/Images/Image6.png)
+
+#### 2364 (with pin 20 as "active low")
+
+This is the default configuration. There is nothing you need to do at all.
+
+#### 2364 (with pin 20 as "active high")
+- Install U3 (74LS04)
+- Switch jumper JP7: 1) Cut one side, 2) solder the other
+
+#### 2332 (with pin 20 as "active low")
+- Switch jumper JP4: 1) Cut one side, 2) solder the other
+- Connect JP8 to 5V or GND, depending on what value you want to have for address line A12 (starting from A0).
+- Cut jumper JP6
+
+#### 2332 (with pin 20 as "active high")
+- Install U3 (74LS04)
+- Switch jumper JP7: 1) Cut one side, 2) solder the other
+
+#### 2332 (with pin 21 as "active low")
+- This is the default. Nothing else to do.
+
+#### 2332 (with pin 21 as "active high")
+- Install U3 (74LS04)
+- Switch jumper JP5: 1) Cut one side, 2) solder the other
+
+### Q&A
+
+#### Why is the configuration active low?
 
 Some ROMs, especially the EEPROMs have an active-low WRITE pin that needs to be HIGH (or 1) in normal (read) use. To avoid putting ROMs in an incorrect mode (write mode instead of read mode), all additional pins are pulled high by default through pull-up resistors.
 
-### Why are address lines from right to left?
+#### Why are address lines from right to left?
 
 Having them in this orientation was the simplest without adding complexity to the design. Additionally, the addressing depends on what type of configuration you use. Binary numbers are usually written from right to left (as implemented) and this works best for jumpers, for example. However, DIP switches uses labels from left to right.
 Overall, one direction had to be chosen, and I went with the simplest. This can be fixed by flipping the address bits. ROMs having this fix already marked with an "f".
