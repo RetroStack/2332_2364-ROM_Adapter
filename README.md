@@ -37,12 +37,11 @@ The adapter has been implemented using KiCAD 7. The KiCAD project files are incl
 
 #### Bank Switching
 
-The adapter allows to bank-switch various ROMs. Depending on the size of ROM used, only some pins may be configurable.
-For example, a 27256 ROM has 15 address pins. The adapter exposes 13 pins to the bottom pins and therefore has 2 additional pins which can be configured for bank-switching. 
+The adapter allows for bank-switching of various ROMs. Depending on the size of the ROM used, only certain pins may be configurable. For example, a 27256 ROM has 15 address pins. The adapter exposes 13 of these pins to the bottom pins, leaving 2 additional pins available for bank-switching.
 
-**NOTE**: Keep in mind that the bits are active-low. That means if you want to set a `1` on a specific address, you leave it unbridged. If you want a `0`, then bridge it. See below for more details why it was designed that way.
+**NOTE**: Keep in mind that the bits are active-low. This means that if you want to set a `1` on a specific address, you leave it unbridged. If you want a `0`, you should bridge it. See below for more details on why it was designed this way.
 
-**NOTE**: The board exposes the bits from right to left. If you prefer left to right (e.g. for DIP switches to match labels), then flip the address bits in the ROM or use the provided "f" versions of these.
+**NOTE**: The board exposes the bits from right to left. If you prefer left to right (e.g., for DIP switches to match labels), you can flip the address bits in the ROM or use the provided "f" versions in the systems ROM repository.
 
 Here are some examples of available bank-switching configurations:
 
@@ -55,7 +54,7 @@ Here are some examples of available bank-switching configurations:
 
 #### Jumper Caps
 
-7. Add a 2 row pin straight header (2.54mm pitch) to the center two pins of the extension board. You need to leave one row on each side (on edge and on the side next to the ROM).
+7. Add a 2-row pin straight header (2.54mm pitch) to the center two pins of the extension board. Make sure to leave one row of pins on each side—one row on the edge and one next to the ROM.
 8. Add jumpers.
 
 #### Right Angle Jumpers
@@ -66,49 +65,49 @@ Here are some examples of available bank-switching configurations:
 
 #### DIP Switches
 
-**NOTE**: For TRS-80 Model 1: Use low-profile dip switches to make sure the adapter fits in the case.
-7) Add a DIP switch on the extension board. The DIP switch should cover all holes from front to back.
+**NOTE**: For the TRS-80 Model 1, use low-profile DIP switches to ensure the adapter fits inside the case.
+7) Add a DIP switch to the extension board. The DIP switch should cover all holes from front to back.
 
 ![Assembled](/Images/Image2.png)
 
 #### DIP Switches on extension board
 
-7) Clip off extension board on perforated line. 
-8) Solder up to 6 wires (e.g. ribbon cable) to the bottom of the PCB. Use up to 3 wires for each address line, which is the row close to the center of the board. To identify which address line is which, see the label just below the ROM on the top of the adapter PCB. Solder at least one wire to any of the holes closer to the edge of the board. These are ground pins and therefore any could be used.
-9) Solder all wires to the extension board. Use the central two rows of holes. Solder it on from the bottom as DIP switches will be added to the top. Solder the address lines closest to the perforated line where the extension board was attached to the adapter PCB. Solder the ground wires to the other holes of the second row further away from the perforated edge.
-10) Add a DIP switch on the extension board. The DIP switch should cover all holes from front to back. You may need to trim the soldered pins of the cable to solder the DIP switches as close to flush as possible.
+7) Clip off the extension board along the perforated line.
+8) Solder up to 6 wires (e.g., ribbon cable) to the bottom of the PCB. Use up to 3 wires for each address line, which is the row close to the center of the board. To identify the address lines, refer to the label just below the ROM on the top of the adapter PCB. Solder at least one wire to any of the holes closer to the edge of the board—these are ground pins, so any of them can be used.
+9) Solder all wires to the extension board using the central two rows of holes. Solder from the bottom, as the DIP switches will be added to the top. Solder the address lines closest to the perforated line where the extension board was attached to the adapter PCB. Solder the ground wires to the other holes in the second row, further from the perforated edge.
+10) Add a DIP switch to the extension board. The DIP switch should cover all holes from front to back. You may need to trim the soldered pins of the cable to allow the DIP switches to sit as close to flush as possible.
 
 ![Assembled](/Images/Image3.png)
 
 #### Jumper caps on extension board
 
-7) Clip off extension board on perforated line.
-8) Solder up to 6 wires (e.g. ribbon cable) to the bottom of the PCB. Use up to 3 wires for each address line, which is the row close to the center of the board. To identify which address line is which, see the label just below the ROM on the top of the adapter PCB. Solder at least one wire to any of the holes closer to the edge of the board. These are ground pins and therefore any could be used.
-9) Add a 2 row pin straight header (2.54mm pitch) to the center two pins of the extension board. You need to leave one row on each side (on edge and on the side next to the ROM).
-10) Solder all wires to the extension board. Use the row closer to the perforated edge to solder the address lines. Solder the single ground wire to the other hole at the bottom edge furthest away from the perforated edge. You can solder it from the top or bottom.
+7) Clip off the extension board along the perforated line.  
+8) Solder up to 6 wires (e.g., ribbon cable) to the bottom of the PCB. Use up to 3 wires for each address line, which is the row close to the center of the board. To identify which address line is which, refer to the label just below the ROM on the top of the adapter PCB. Solder at least one wire to any of the holes closer to the edge of the board—these are ground pins, so any of them can be used.  
+9) Add a 2-row pin straight header (2.54mm pitch) to the center two pins of the extension board. Leave one row on each side—one on the edge and one next to the ROM.  
+10) Solder all wires to the extension board. Solder the address lines to the row closer to the perforated edge, and solder the single ground wire to the hole at the bottom edge furthest from the perforated edge. You can solder this from either the top or bottom.  
 11) Add jumpers.
 
 #### Connect two or more adapters together
 
 ![Assembled](/Images/Image1.png)
 
-Sometimes it is useful to be able to bank-switch multiple ROMs all at once.
+Sometimes it is useful to be able to bank-switch multiple ROMs simultaneously.
 
-7) Clip off extension boards on nearly all boards at the perforated line - except one which will be used for selection.
-8) Solder up to 6 wires (e.g. ribbon cable) to the bottom of one PCB. Use up to 3 wires for each address line, which is the row close to the center of the board. To identify which address line is which, see the label just below the ROM on the top of the adapter PCB. Solder at least one wire to any of the holes closer to the edge of the board. These are ground pins and therefore any could be used.
-9) Repeat the same for the other board with the other end of the wires. Make sure that the wires from one pad goes to the same pad on the other adapter.
+7) Clip off the extension boards on nearly all the boards at the perforated line—except one, which will be used for selection.  
+8) Solder up to 6 wires (e.g., ribbon cable) to the bottom of one PCB. Use up to 3 wires for each address line, which is the row close to the center of the board. To identify which address line is which, refer to the label just below the ROM on the top of the adapter PCB. Solder at least one wire to any of the holes closer to the edge of the board—these are ground pins, so any of them can be used.  
+9) Repeat the same process for the other board using the other end of the wires. Ensure that the wires from each pad on one adapter connect to the corresponding pad on the other adapter.
 
 ![Assembled](/Images/Image5.png)
 
 ### Configuration
 
-Depending on what ROM and even specific version you want to emulate, you will need to configure the adapter differently. Following a list of confiurations:
+Depending on which ROM and even the specific version you want to emulate, you will need to configure the adapter accordingly. Below is a list of configurations:
 
 ![Assembled](/Images/Image6.png)
 
 #### 2364 (with pin 20 as "active low")
 
-This is the default configuration. There is nothing you need to do at all.
+This is the default configuration. No additional steps are required.
 
 #### 2364 (with pin 20 as "active high")
 - Install U3 (74LS04)
@@ -116,7 +115,7 @@ This is the default configuration. There is nothing you need to do at all.
 
 #### 2332 (with pin 20 as "active low")
 - Switch jumper JP4: 1) Cut one side, 2) solder the other
-- Connect JP8 to 5V or GND, depending on what value you want to have for address line A12 (starting from A0).
+- Connect JP8 to either 5V or GND, depending on the value you want for address line A12 (starting from A0).
 - Cut jumper JP6
 
 #### 2332 (with pin 20 as "active high")
@@ -134,18 +133,19 @@ This is the default configuration. There is nothing you need to do at all.
 
 #### Why is the configuration active low?
 
-Some ROMs, especially the EEPROMs have an active-low WRITE pin that needs to be HIGH (or 1) in normal (read) use. To avoid putting ROMs in an incorrect mode (write mode instead of read mode), all additional pins are pulled high by default through pull-up resistors.
+Some ROMs, especially EEPROMs, have an active-low WRITE pin that needs to be HIGH (or 1) during normal (read) use. To prevent accidentally putting ROMs into the incorrect mode (write mode instead of read mode), all additional pins are pulled high by default through pull-up resistors.
 
 #### Why are address lines from right to left?
 
-Having them in this orientation was the simplest without adding complexity to the design. Additionally, the addressing depends on what type of configuration you use. Binary numbers are usually written from right to left (as implemented) and this works best for jumpers, for example. However, DIP switches uses labels from left to right.
-Overall, one direction had to be chosen, and I went with the simplest. This can be fixed by flipping the address bits. ROMs having this fix already marked with an "f".
+Having them in this orientation was the simplest solution without adding complexity to the design. Additionally, the addressing depends on the type of configuration you use. Binary numbers are typically written from right to left (as implemented), which works best for jumpers, for example. However, DIP switches use labels from left to right.
+
+Overall, one direction had to be chosen, and I opted for the simplest. This can be adjusted by flipping the address bits. ROMs with this fix are already marked with an "f".
 
 ### Bill of Materials (BOM)
 
-Below is a list of materials needed to assemble a complete system. Please note that the links and prices (scroll to the right to see them; as of March 3rd, 2024) will not be updated in the future and should only be used as a reference for locating the correct items.
+Below is a list of materials needed to assemble a complete system. Please note that the links and prices (scroll to the right to see them; as of August 22nd, 2024) will not be updated in the future and should only be used as a reference for locating the correct items.
 
-**NOTE**: Links and alternatives are provided to assist you in finding the necessary components. I cannot guarantee the complete accuracy or reliability of all these links and alternatives. Please check it for yourself!
+**NOTE**: Links and alternatives are provided to assist you in finding the necessary components. I cannot guarantee the complete accuracy or reliability of all these links and alternatives. Please verify the information for yourself.
 
 | PCB REFERENCE | QTY | VALUE       | COMMENT                                                                                                                                                                                                                          | EACH | TOTAL | SOURCE LINK                                                                               |
 | ------------- | --- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ----- | ----------------------------------------------------------------------------------------- |
