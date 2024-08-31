@@ -157,6 +157,14 @@ Below is a list of materials needed to assemble a complete system. Please note t
 | J2            | 1   | -           | Optional. Adding the ability to switch character sets.                                                                                                                                                                           | 0.27 | 0.27  | [Mouser](https://www.mouser.com/ProductDetail/571-1033222)                                |
 |               | 1   | Low-profile | Optional. Adding the ability to switch character sets.                                                                                                                                                                           | 0.67 | 0.67  | [Mouser](https://www.mouser.com/ProductDetail/774-2105MS)                                 |
 
+### ROM Binaries
+
+This repository contains only the adapter boards. The ROM binaries themselves can be found in other repositories and sources. Below is a list of known binary sources:
+
+- [TRS-80 Model 1](https://github.com/RetroStack/TRS-80-Model-I-System-ROMs) - RetroStack
+
+More sources will be added over time. Let me know if you are aware of good sources.
+
 ### RetroStack Libraries
 
 To work with this KiCAD project, you'll need the RetroStack libraries for KiCAD. Please [follow this link](https://www.github.com/RetroStack/KiCAD-Libraries) to access and install these libraries.
